@@ -67,6 +67,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
@@ -178,18 +179,37 @@
 </style>
 
 <main class="main">
-  <div class="content">
-    <cobalt-config
-      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiI2M2IzY2E1NzczYTIxMjQzMTZkMDRiNTgiLCJsaW5rZWRfYWNjb3VudF9pZCI6InRlc3QiLCJlbnZpcm9ubWVudCI6InRlc3QiLCJpYXQiOjE3MDgzMTUxOTUsImV4cCI6MTcwODU3NDM5NX0.AO6R2KSRLgRWooM_9DqromJ66gGYgDxJLkF-yofbW9M"
-      slug="slack"
-    />
-  </div>
-  <div class="content">
-    <cobalt-config
-      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiI2M2IzY2E1NzczYTIxMjQzMTZkMDRiNTgiLCJsaW5rZWRfYWNjb3VudF9pZCI6InRlc3QiLCJlbnZpcm9ubWVudCI6InRlc3QiLCJpYXQiOjE3MDgzMTUxOTUsImV4cCI6MTcwODU3NDM5NX0.AO6R2KSRLgRWooM_9DqromJ66gGYgDxJLkF-yofbW9M"
-      slug="mailerlite"
-    />
-  </div>
+  @if (ready) {
+    <div class="content">
+      <cobalt-config
+        [token]="token"
+        slug="slack"
+      />
+    </div>
+    <div class="content">
+      <cobalt-config
+        [token]="token"
+        slug="mailerlite"
+      />
+    </div>
+  } @else {
+    <mat-form-field class="field">
+      <mat-label>Token</mat-label>
+      <input
+        matInput
+        placeholder="Enter Linked Token"
+        [value]="token"
+        (keyup)="setToken($event)"
+      />
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="saveToken()"
+    >
+      {{ ready ? "Reset" : "Save" }}
+    </button>
+  }
 </main>
 
 <router-outlet />
