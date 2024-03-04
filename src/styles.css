@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-text-field {
+    border-radius: 8px !important;
+    border: 1px solid rgba(145, 158, 171, 0.2) !important;
+}
+.mdc-text-field .mdc-line-ripple {
+    display: none !important;
+}
+.mat-mdc-select-panel {
+    border-radius: 8px !important;
+    box-shadow: rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px !important;
+}
